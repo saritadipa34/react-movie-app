@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
+import { MovieContext } from "../context/MovieContext";
 
 const Add=()=>{
-    
+    const MovieList=useContext(MovieContext);
     return(
         
         <div className="relative w-1/3  h-[500px] flex flex-col  mx-auto pt-5">
