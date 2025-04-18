@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const Header=()=>{
     return(
@@ -7,7 +8,9 @@ const Header=()=>{
         <ul className="w-1/3 flex gap-15">
           <Link to="/"> <li className="text-white cursor-pointer">Watchlist</li> </Link>
           <Link to="/Watched">  <li className=" text-white cursor-pointer">Watched</li> </Link>
-          <Link to="Add"><li className="px-3 bg-green-400 cursor-pointer">ADD</li> </Link>
+          <Link to="Add"><li >
+            <Button text={"ADD"} className={"px-3"}/>
+            </li> </Link>
         </ul>
         </div>
     )
