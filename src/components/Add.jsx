@@ -3,10 +3,16 @@ import { FaSearch } from "react-icons/fa";
 import { MovieContext } from "../context/MovieContext";
 import SearchCard from "./SearchCard";
 
-const Add=()=>{
-    const [inputValue,setInputValue]=useState('');
+const Add=({inputValue,setInputValue})=>{
+
     const [movies,setMovies]=useState([]);
     const {getMovieData}=useContext(MovieContext);
+
+const addToWatchList=()=>{
+    localStorage.setItem('movie','hero')
+    
+    console.log("watchlist");
+}
 
 const handleInput=async(e)=>{
     const inputData=e.target.value;
@@ -27,7 +33,7 @@ setMovies(result);
             <div className="h-[450px] max-h-[450px] flex flex-col gap-2 overflow-y-scroll">
 {   movies && movies.length > 0 &&
 movies.map((movie)=>{
-    return <SearchCard movie={movie} key={movie.imdbID} />
+    return <SearchCard movie={movie} key={movie.imdbID} onClick={addToWatchList} />
 })
 }
 </div>

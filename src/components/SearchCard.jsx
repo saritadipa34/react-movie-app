@@ -1,7 +1,7 @@
 import Button from "./Button";
 
 
-const SearchCard=({movie})=>{
+const SearchCard=({movie,onClick})=>{
     console.log(movie);
     const{Poster,Title,Year,Type}=movie;
 
@@ -15,7 +15,7 @@ const SearchCard=({movie})=>{
 <p>{Year}</p>
 
 <div className="flex w-full gap-10">
-<Button className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHLIST"} />
+<Button onClick={onClick} className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHLIST"} />
 <Button className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHED"} />
 </div>
 </div>
