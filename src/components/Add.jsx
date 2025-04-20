@@ -4,8 +4,17 @@ import { MovieContext } from "../context/MovieContext";
 import SearchCard from "./SearchCard";
 
 const Add=({inputValue,setInputValue,watchList,setWatchList})=>{
+    const [searchResults,setSearchResults]=useState([]);
     const [movies,setMovies]=useState([]);
     const {getMovieData}=useContext(MovieContext);
+
+useEffect(()=>{
+const searchedMovie=localStorage.getItem('searched');
+if(searchedMovie){
+    setSearchResults(JSON.parse(searchedMovie));
+    setMovies(JSON.parse(searchedMovie))
+}
+},[])
 
 const addToWatchList=(movie)=>{
 if(!watchList.find((watch)=>watch.imdbID === movie.imdbID)){
@@ -14,7 +23,6 @@ if(!watchList.find((watch)=>watch.imdbID === movie.imdbID)){
     localStorage.setItem('watchList',JSON.stringify(updatedList))
     console.log(movie);
 }
-    console.log("watchlist");
 }
 
 const handleInput=async(e)=>{
@@ -23,6 +31,8 @@ const handleInput=async(e)=>{
     if(inputData.trim() !== ""){
      const result= await getMovieData(inputData);
 setMovies(result);
+setSearchResults(result);
+localStorage.setItem('searched',JSON.stringify(result));
     }
 }
 
