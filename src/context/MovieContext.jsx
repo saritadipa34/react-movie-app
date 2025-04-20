@@ -24,7 +24,7 @@ if(data.Response==='True'){
 }
 
     return(
-<MovieContext.Provider value={{getMovieData}}>
+<MovieContext.Provider value={{getMovieData,search}}>
 {children}
 </MovieContext.Provider>
     )

@@ -15,7 +15,7 @@ const SearchCard=({movie,onClick})=>{
 <p>{Year}</p>
 
 <div className="flex w-full gap-10">
-<Button onClick={onClick} className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHLIST"} />
+<Button onClick={()=>onClick(movie)} movie={movie} className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHLIST"} />
 <Button className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHED"} />
 </div>
 </div>
