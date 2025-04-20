@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MovieContext } from "../context/MovieContext";
 import SearchCard from "./SearchCard";
@@ -22,7 +22,6 @@ const handleInput=async(e)=>{
     setInputValue(inputData);
     if(inputData.trim() !== ""){
      const result= await getMovieData(inputData);
-     console.log(result,"fetched");
 setMovies(result);
     }
 }

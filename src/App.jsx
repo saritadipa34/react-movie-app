@@ -3,13 +3,19 @@ import Header from "./components/Header";
 import Watched from "./components/Watched";
 import Add from "./components/Add";
 import WatchList from "./components/WatchList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App=()=>{
       const [inputValue,setInputValue]=useState('');
     const [watchList, setWatchList] = useState([]);
     
-  
+useEffect(()=>{
+const saved=localStorage.getItem('watchList');
+if(saved){
+  setWatchList(JSON.parse(saved));
+}
+},[])
+
   return(
     <div>
       <Router>
