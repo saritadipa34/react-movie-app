@@ -1,7 +1,7 @@
 
-const Button=({text,className,onClick,movie})=>{
+const Button=({text,className,onClick})=>{
     return(
-        <button onClick={()=>onClick(movie)} movie={movie} className={`bg-green-500 cursor-pointer ${className}`}>{text}</button>
+        <button onClick={onClick} className={`bg-green-500 cursor-pointer ${className}`}>{text}</button>
     )
 }
 export default Button;

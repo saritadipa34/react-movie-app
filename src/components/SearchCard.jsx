@@ -2,7 +2,6 @@ import Button from "./Button";
 
 
 const SearchCard=({movie,onClick})=>{
-    console.log(movie);
     const{Poster,Title,Year,Type}=movie;
 
     return(
@@ -15,7 +14,7 @@ const SearchCard=({movie,onClick})=>{
 <p>{Year}</p>
 
 <div className="flex w-full gap-10">
-<Button onClick={()=>onClick(movie)} movie={movie} className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHLIST"} />
+<Button onClick={onClick} movie={movie} className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHLIST"} />
 <Button className={"h-6 text-[10px] px-2"} text={"ADD TO WATCHED"} />
 </div>
 </div>
