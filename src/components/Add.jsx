@@ -9,10 +9,14 @@ const Add=({inputValue,setInputValue,watchList,setWatchList})=>{
     const {getMovieData}=useContext(MovieContext);
 
 useEffect(()=>{
+    try{
 const searchedMovie=localStorage.getItem('searched');
 if(searchedMovie){
     setSearchResults(JSON.parse(searchedMovie));
     setMovies(JSON.parse(searchedMovie))
+}} catch(error){
+console.log(error.message);
+localStorage.removeItem('searched');
 }
 },[])
 
@@ -20,8 +24,7 @@ const addToWatchList=(movie)=>{
 if(!watchList.find((watch)=>watch.imdbID === movie.imdbID)){
     const updatedList=[...watchList,movie];
     setWatchList(updatedList);
-    localStorage.setItem('watchList',JSON.stringify(updatedList))
-    console.log(movie);
+    localStorage.setItem('watchList',JSON.stringify(updatedList));
 }
 }
 
@@ -33,6 +36,10 @@ const handleInput=async(e)=>{
 setMovies(result);
 setSearchResults(result);
 localStorage.setItem('searched',JSON.stringify(result));
+    } else{
+        setMovies([]);
+        setSearchResults([]);
+        localStorage.removeItem('searched');
     }
 }
 
