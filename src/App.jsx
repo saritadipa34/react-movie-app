@@ -10,13 +10,29 @@ const App=()=>{
     const [watchList, setWatchList] = useState([]);
     const [watchedList,setWatchedList]=useState([]);
     
+useEffect(()=>{
+const watched=localStorage.getItem('watched');
+if(watched){
+  setWatchedList(JSON.parse(watched))
+}
+},[])
 
 useEffect(()=>{
-const saved=localStorage.getItem('watchList');
+  if(watchedList.length > 0){
+localStorage.setItem('watched',JSON.stringify(watchedList))}
+},[watchedList])
+
+useEffect(()=>{
+const saved=localStorage.getItem('wishList');
 if(saved){
   setWatchList(JSON.parse(saved));
 }
 },[])
+
+useEffect(()=>{
+  if(watchList.length > 0){
+  localStorage.setItem('wishList',JSON.stringify(watchList))}
+},[watchList])
 
   return(
     <div>

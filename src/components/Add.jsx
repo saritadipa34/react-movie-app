@@ -24,7 +24,7 @@ const addToWatchList=(movie)=>{
 if(!watchList.find((watch)=>watch.imdbID === movie.imdbID)){
     const updatedList=[...watchList,movie];
     setWatchList(updatedList);
-    localStorage.setItem('watchList',JSON.stringify(updatedList));
+    localStorage.setItem('wishList',JSON.stringify(updatedList));
 }
 }
 

@@ -8,10 +8,12 @@ if(!watchList.some((item)=> item.imdbID === movie.imdbID)){
     setWatchList([...watchList,movie])
     setWatchedList([...watchedList,movie])
 } else {
-setWatchList(watchList.filter((item)=>item.imdbID !== movie.imdbID));
+    const updatedWatched=watchList.filter((item)=>item.imdbID !== movie.imdbID);
+setWatchList(updatedWatched);
 setWatchedList([...watchedList,movie]);
+localStorage.setItem('watched',JSON.stringify(updatedWatched));
+
 }
-   
 }
 
     return(
