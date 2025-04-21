@@ -8,8 +8,8 @@ const Watched=({watchedList})=>{
             <h1 className="font-bold text-2xl my-4">My WatchedList</h1>
               <div className="h-full w-full flex flex-wrap gap-5 "> 
 {
-    watchedList.length> 0 && watchedList.map((film)=>{
-        return <MovieCard key={film.imdbID} movie={film}/>
+    watchedList.length> 0 && watchedList.map((film,index)=>{
+        return <MovieCard key={`${film.imdbID}-${index}`} movie={film}/>
     })
 }
         </div>

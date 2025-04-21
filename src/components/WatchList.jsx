@@ -1,7 +1,7 @@
 
 import MovieCard from "./MovieCard";
 
-const WatchList=({inputValue,watchList,watchedList,setWatchedList,setWatchList,movie})=>{
+const WatchList=({inputValue,watchList,watchedList,setWatchedList,setWatchList})=>{
 
 const handleWatched=(movie)=>{
 if(!watchList.some((item)=> item.imdbID === movie.imdbID)){
@@ -22,7 +22,7 @@ localStorage.setItem('watched',JSON.stringify(updatedWatched));
             <div className="h-full w-full flex flex-wrap gap-5 "> 
 
                 { watchList.length > 0 &&  watchList.map((list)=>{
-  return  <MovieCard onClick={()=>handleWatched(list)} inputValue={inputValue} movie={list} key={list.imdbID}/>
+  return  <MovieCard onClick={()=>handleWatched(list)} movie={list} key={list.imdbID}/>
                 })
                 }
           
