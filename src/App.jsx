@@ -8,7 +8,9 @@ import { useEffect, useState } from "react";
 const App=()=>{
       const [inputValue,setInputValue]=useState('');
     const [watchList, setWatchList] = useState([]);
+    const [watchedList,setWatchedList]=useState([]);
     
+
 useEffect(()=>{
 const saved=localStorage.getItem('watchList');
 if(saved){
@@ -21,9 +23,10 @@ if(saved){
       <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<WatchList inputValue={inputValue} watchList={watchList}/>} />
-        <Route path="/Watched" element={<Watched />} />
-        <Route path="/Add" element={<Add inputValue={inputValue} setInputValue={setInputValue}  watchList={watchList} setWatchList={setWatchList}/>}></Route>
+        <Route path="/" element={<WatchList inputValue={inputValue} watchList={watchList}  setWatchList={setWatchList} watchedList={watchedList} setWatchedList={setWatchedList}/>} />
+        <Route path="/Watched" element={<Watched watchedList={watchedList} />} />
+        <Route path="/Add" element={<Add inputValue={inputValue}  setInputValue={setInputValue}  watchList={watchList} setWatchList={setWatchList}
+        />}></Route>
       </Routes> 
       </Router>
       

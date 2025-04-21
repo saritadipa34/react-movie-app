@@ -1,14 +1,26 @@
 
 import MovieCard from "./MovieCard";
 
-const WatchList=({inputValue,watchList})=>{
+const WatchList=({inputValue,watchList,watchedList,setWatchedList,setWatchList,movie})=>{
+
+const handleWatched=(movie)=>{
+if(!watchList.some((item)=> item.imdbID === movie.imdbID)){
+    setWatchList([...watchList,movie])
+    setWatchedList([...watchedList,movie])
+} else {
+setWatchList(watchList.filter((item)=>item.imdbID !== movie.imdbID));
+setWatchedList([...watchedList,movie]);
+}
+   
+}
+
     return(
         <div className="px-[190px] w-full h-screen">
             <h1 className="font-bold text-2xl my-4">My WatchList</h1>
             <div className="h-full w-full flex flex-wrap gap-5 "> 
 
                 { watchList.length > 0 &&  watchList.map((list)=>{
-  return  <MovieCard inputValue={inputValue} movie={list} key={list.imdbID}/>
+  return  <MovieCard onClick={()=>handleWatched(list)} inputValue={inputValue} movie={list} key={list.imdbID}/>
                 })
                 }
           
