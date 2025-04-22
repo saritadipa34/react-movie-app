@@ -1,19 +1,19 @@
 
 import MovieCard from "./MovieCard";
 
-const WatchList=({inputValue,watchList,watchedList,setWatchedList,setWatchList})=>{
+const WatchList=({watchList,watchedList,setWatchedList,setWatchList})=>{
 
-const handleWatched=(movie)=>{
-if(!watchList.some((item)=> item.imdbID === movie.imdbID)){
-    setWatchList([...watchList,movie])
-    setWatchedList([...watchedList,movie])
-} else {
-    const updatedWatched=watchList.filter((item)=>item.imdbID !== movie.imdbID);
-setWatchList(updatedWatched);
-setWatchedList([...watchedList,movie]);
-localStorage.setItem('watched',JSON.stringify(updatedWatched));
+    const handleWatched=(movie)=>{
 
+if(!watchedList.some((item)=>item.imdbID === movie.imdbID)){
+    const watchedMovie=[...watchedList,movie];
+setWatchedList(watchedMovie);
+const filtered=watchList.filter((item)=>item.imdbID !== movie.imdbID);
+setWatchList(filtered);
+localStorage.setItem('wishList',JSON.stringify(filtered));
 }
+
+console.log("watched");
 }
 
     return(
