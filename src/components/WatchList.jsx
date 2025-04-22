@@ -3,8 +3,8 @@ import MovieCard from "./MovieCard";
 
 const WatchList=({watchList,watchedList,setWatchedList,setWatchList})=>{
 
-    const handleWatched=(movie)=>{
-
+    
+    const addWatched=(movie)=>{
 if(!watchedList.some((item)=>item.imdbID === movie.imdbID)){
     const watchedMovie=[...watchedList,movie];
 setWatchedList(watchedMovie);
@@ -22,7 +22,7 @@ console.log("watched");
             <div className="h-full w-full flex flex-wrap gap-5 "> 
 
                 { watchList.length > 0 &&  watchList.map((list)=>{
-  return  <MovieCard onClick={()=>handleWatched(list)} movie={list} key={list.imdbID}/>
+  return  <MovieCard addWatched={()=>addWatched(list)}  movie={list} key={list.imdbID}/>
                 })
                 }
           

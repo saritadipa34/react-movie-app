@@ -1,7 +1,12 @@
 import MovieCard from "./MovieCard";
 
+const Watched=({watchedList,setWatchedList})=>{
 
-const Watched=({watchedList})=>{
+    const removeWatched=(movie)=>{
+        const removed=watchedList.filter((item)=>item.imdbID !== movie.imdbID)
+            console.log("removeWatched",removed);
+            setWatchedList(removed);
+        }
 
     return(
         <div className="px-[190px] w-full h-screen ">
@@ -9,7 +14,7 @@ const Watched=({watchedList})=>{
               <div className="h-full w-full flex flex-wrap gap-5 "> 
 {
     watchedList.length> 0 && watchedList.map((film,index)=>{
-        return <MovieCard key={`${film.imdbID}-${index}`} movie={film}/>
+        return <MovieCard key={`${film.imdbID}-${index}`} movie={film} removeWatched={()=>removeWatched(film)}/>
     })
 }
         </div>

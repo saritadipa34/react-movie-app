@@ -40,7 +40,7 @@ useEffect(()=>{
       <Header />
       <Routes>
         <Route path="/" element={<WatchList inputValue={inputValue} watchList={watchList}  setWatchList={setWatchList} watchedList={watchedList} setWatchedList={setWatchedList}/>} />
-        <Route path="/Watched" element={<Watched watchedList={watchedList} />} />
+        <Route path="/Watched" element={<Watched watchedList={watchedList} setWatchedList={setWatchedList} />} />
         <Route path="/Add" element={<Add inputValue={inputValue}  setInputValue={setInputValue}  watchList={watchList} setWatchList={setWatchList}
         />}></Route>
       </Routes> 
